@@ -1,0 +1,46 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[usp_Pecaros]
+@akcija AS INT = NULL,
+@sifra AS INT = NULL,
+@ime AS NVARCHAR(50) = NULL,
+@prezime AS NVARCHAR(50) = NULL,
+@adresa AS NVARCHAR(50) = NULL,
+@grad AS NVARCHAR(50) = NULL,
+@gradid AS INT = NULL,
+@telefon AS NVARCHAR(15) = NULL,
+@od AS DATETIME = NULL, 
+@do AS DATETIME = NULL AS
+   
+IF(@akcija=0)
+BEGIN
+SELECT P.PecarosID AS PecarosID,
+       P.Ime As Ime,
+       P.Prezime AS Prezime,
+       P.Adresa AS Adresa,
+       G.GradID AS GradID,
+       G.Grad AS Grad,
+       P.Telefon AS Telefon
+FROM Pecaros AS P
+JOIN Grad G ON P.GradID=G.GradID
+WHERE P.PecarosID=@sifra OR @sifra IS NULL
+ORDER BY P.PecarosID ASC
+END
+ 
+IF(@akcija=1)
+BEGIN
+UPDATE Pecaros SET Ime=@ime, Prezime=@prezime, Adresa=@adresa, GradID=@gradid, Telefon=@telefon WHERE PecarosID=@sifra
+END
+ 
+IF(@akcija=2)
+BEGIN
+SELECT VR.Naziv Vrsta, COUNT(U.RbrUlova) Broj
+FROM Vrsta_Ribe AS VR
+JOIN Ulov U ON VR.VrstaID=U.VrstaID
+JOIN Pecaros P ON U.PecarosID=P.PecarosID
+WHERE (P.PecarosID=@sifra OR @sifra IS NULL) AND U.Datum >= @od AND U.Datum <= @do
+GROUP BY VR.Naziv
+ORDER BY VR.Naziv ASC
+END
