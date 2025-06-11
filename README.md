@@ -1,56 +1,44 @@
-````markdown
-# TB Програм – Personal Notes
+```markdown
+# TB Програм – personal notes
 
-### 🖋 General UI Setup
+## general ui setup
 
-- Change font to **Consolas** for fixed alignment between `label7` and `listBox`.
-- Just **make charts larger** (without using Properties) if they're small enough – literally drag them to be larger.
-- `label7` is the **only one you need above the `listBox`** on `Form1`.
+- change font to consolas for fixed alignment between label7 and listbox  
+- just make charts larger (without properties) if they're small enough (literally drag it to be larger)  
+- label 7 is the only one you need above the listbox on Form1  
 
----
+## toolstrip settings
 
-### 🧰 ToolStrip Settings
+- in toolstrip, specifically buttons, there is an option in properties to make the image be above the text  
+- also add the image in the menu of the toolstrip and not the properties of the button  
 
-- In **ToolStrip**, specifically buttons:
-  - In Properties, set the image to be **above the text**.
-  - **Add the image in the ToolStrip menu**, not through the individual button's properties.
+## string formatting for listbox and label7
 
----
+there are these lines in the code, specifically in the Pecaros.cs and Form1.cs which determine the gap between words in listbox and the label7:
 
-### 🔤 Text Alignment for ListBox and Label7
+```
 
-There are lines in the code, specifically in `Pecaros.cs` and `Form1.cs`, which determine the gap between words in the `ListBox` and `label7`.
-
-Original `ToString()` method:
-
-```csharp
 public override string ToString()
 {
-    return String.Format("{0,-6}{1,-15}{2,-15}{3,-20}{4,-15}{5,-12}", 
-        this.PecarosID, this.Ime, this.Prezime, this.Adresa, this.Grad, this.Telefon);
+return String.Format("{0,-6}{1,-15}{2,-15}{3,-20}{4,-15}{5,-12}", this.PecarosID, this.Ime, this.Prezime, this.Adresa, this.Grad, this.Telefon);
 }
-```
-````
-
-🔁 **Change this format string:**
 
 ```
+
+change this string:  
+```
+
 {0,-6}{1,-15}{2,-15}{3,-20}{4,-15}{5,-12}
-```
-
-⬇️ **To this one:**
 
 ```
+
+to this one:  
+```
+
 {0,-6}{1,-15}{2,-15}{3,-25}{4,-15}{5,-12}
-```
-
-Make the change in **both files**: `Pecaros.cs` and `Form1.cs`.
-
----
-
-This file is just for personal reference when working on layout, alignment, and formatting in the project.
 
 ```
 
-You can now paste this directly into your `README.md` file — it will look neat and readable without needing horizontal scrolling. Let me know if you want this broken into sections or saved as a downloadable file.
+in both files
 ```
+
