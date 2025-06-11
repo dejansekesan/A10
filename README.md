@@ -22,7 +22,3 @@ public override string ToString()
 
 **in both files**
 
-```
-
-This will look exactly how you want it on GitHub — clean, consistent, and properly styled. Let me know if you want a version in Serbian or a downloadable file.
-```
