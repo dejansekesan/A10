@@ -1,7 +1,7 @@
 
 # personal notes
 
-– change font to consolas for fixed alignment between **label7** and **listbox**  
+– change font to **Consolas** for fixed alignment between **label7** and **listbox**  
 – just make charts larger **(without properties)** if they're small enough (literally drag it to be larger)   
 – **label7** is the **only** one you need above the **listbox** on **Form1**  
 – in **toolstrip**, **specifically buttons**, there is an option in **properties** to make the **image** be **above the text**, also add the **image** in the **menu** of the **toolstrip** and **not** the **properties** of the **button**  
